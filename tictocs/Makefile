@@ -35,16 +35,27 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 # Object files for local .cc, .msg and .sm files
 OBJS = \
     $O/txc10.o \
+    $O/txc11.o \
+    $O/txc12.o \
+    $O/txc13.o \
+    $O/txc14.o \
+    $O/txc15.o \
     $O/txc3.o \
     $O/txc4.o \
     $O/txc5.o \
     $O/txc6.o \
     $O/txc7.o \
     $O/txc8.o \
-    $O/txc9.o
+    $O/txc9.o \
+    $O/tictoc13_m.o \
+    $O/tictoc14_m.o \
+    $O/tictoc15_m.o
 
 # Message files
-MSGFILES =
+MSGFILES = \
+    tictoc13.msg \
+    tictoc14.msg \
+    tictoc15.msg
 
 # SM files
 SMFILES =
@@ -106,7 +117,8 @@ $O/$(TARGET): $(OBJS)  $(wildcard $(EXTRA_OBJS)) Makefile $(CONFIGFILE)
 
 .PHONY: all clean cleanall depend msgheaders smheaders
 
-.SUFFIXES: .cc
+# disabling all implicit rules
+.SUFFIXES :
 
 $O/%.o: %.cc $(COPTS_FILE) | msgheaders smheaders
 	@$(MKPATH) $(dir $@)
